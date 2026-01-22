@@ -1,0 +1,40 @@
+import {
+  Injectable,
+  OnModuleInit,
+  OnModuleDestroy,
+  Logger,
+} from '@nestjs/common';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '@prisma/client';
+import { Pool } from 'pg';
+
+@Injectable()
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  private readonly logger = new Logger(PrismaService.name);
+
+  constructor() {
+    // Prisma 7: PG Adapter für Neon/Postgres
+    const pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+    });
+
+    const adapter = new PrismaPg(pool);
+
+    super({
+      adapter,
+      log: ['query', 'info', 'warn', 'error'],
+    });
+  }
+
+  async onModuleInit() {
+    await this.$connect();
+    this.logger.log('prisma connected.');
+  }
+
+  async onModuleDestroy() {
+    await this.$disconnect();
+  }
+}
