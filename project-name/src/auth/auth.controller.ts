@@ -11,6 +11,7 @@ import { UsersService } from '../users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { LocalAuthGuard } from './local-auth.guard';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { RefreshTokenDto } from './dto/refresh-token.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -41,4 +42,15 @@ export class AuthController {
     return { message: 'logged in' };
   }
 
+  @Post('refresh')
+  async refresh(@Body() dto: RefreshTokenDto) {
+    return this.authService.refreshTokens(dto.refreshToken);
+  }
+  /*
+  @UseGuards(JwtAuthGuard)
+  @Post('logout')
+  logout() {
+    return { message: 'Logged out. Please delete tokens on client.' };
+  }
+   */
 }
