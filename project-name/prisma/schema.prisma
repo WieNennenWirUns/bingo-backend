@@ -22,13 +22,20 @@ model User {
   username    String   @db.VarChar(20)
   email       String   @unique
   friendcode  String   @db.VarChar(6)
-  credentials String   @db.VarChar(60) // bcrypt-Hash
+  credentials String   @db.VarChar(60)
 
-  memberships  IsMemberOf[]
-  boardConfigs HasBoardConfig[]
-  boards       Board[] @relation("BoardOwner")
-  createdAt    DateTime @default(now())
+  memberships   IsMemberOf[]
+  boardConfigs  HasBoardConfig[]
+  boards        Board[] @relation("BoardOwner")
+  createdAt     DateTime @default(now())
+
+  friendRequestsSent     FriendRequest[] @relation("FriendRequestsSent")
+  friendRequestsReceived FriendRequest[] @relation("FriendRequestsReceived")
+
+  friendships1           Friendship[]    @relation("FriendshipUser1")
+  friendships2           Friendship[]    @relation("FriendshipUser2")
 }
+
 
 model Board {
   id         Int      @id @default(autoincrement())
@@ -75,4 +82,36 @@ model HasBoardConfig {
   task Task @relation(fields: [taskId], references: [id])
 
   @@id([userId, taskId])
+}
+
+model FriendRequest {
+  id          Int                  @id @default(autoincrement())
+  fromId      Int
+  toId        Int
+  status      FriendRequestStatus  @default(PENDING)
+  createdAt   DateTime             @default(now())
+  respondedAt DateTime?
+
+  from User @relation("FriendRequestsSent",     fields: [fromId], references: [id])
+  to   User @relation("FriendRequestsReceived", fields: [toId],   references: [id])
+
+  @@unique([fromId, toId])
+}
+
+enum FriendRequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model Friendship {
+  id        Int      @id @default(autoincrement())
+  user1Id   Int
+  user2Id   Int
+  createdAt DateTime @default(now())
+
+  user1 User @relation("FriendshipUser1", fields: [user1Id], references: [id])
+  user2 User @relation("FriendshipUser2", fields: [user2Id], references: [id])
+
+  @@unique([user1Id, user2Id])
 }

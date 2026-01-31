@@ -10,13 +10,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const secret = config.get<string>('JWT_SECRET');
 
     if (!secret) {
-      throw new Error('JWT_SECRET ist nicht in .env definiert');
+      throw new Error('JWT_SECRET isnt defined in .env');
     }
 
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: secret, // jetzt garantiert string
+      secretOrKey: secret,
     });
   }
 
