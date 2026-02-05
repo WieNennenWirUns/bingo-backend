@@ -54,11 +54,4 @@ export class AuthController {
     return req.user;
   }
 
-  /*
-  @UseGuards(JwtAuthGuard)
-  @Post('logout')
-  logout() {
-    return { message: 'Logged out. Please delete tokens on client.' };
-  }
-   */
 }

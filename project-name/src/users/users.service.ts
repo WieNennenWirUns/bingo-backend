@@ -11,7 +11,6 @@ export class UsersService {
   }
 
   async createUser(username: string, email: string, password: string) {
-
     if (username.length == 0) {
       throw new BadRequestException("username can't be empty");
     }
@@ -28,7 +27,7 @@ export class UsersService {
       do {
         friendcode = Math.random().toString(36).substring(2, 8).toUpperCase();
         existingUser = await this.prisma.user.findFirst({
-          where: { friendcode }
+          where: { friendcode },
         });
       } while (existingUser);
 
@@ -52,11 +51,11 @@ export class UsersService {
 
       if (error.code === 'P2002') {
         const existingUserByEmail = await this.prisma.user.findUnique({
-          where: { email }
+          where: { email },
         });
 
         const existingUserByUsername = await this.prisma.user.findFirst({
-          where: { username }
+          where: { username },
         });
 
         if (existingUserByEmail) {
@@ -71,5 +70,4 @@ export class UsersService {
       throw new BadRequestException('error while handling request');
     }
   }
-
 }

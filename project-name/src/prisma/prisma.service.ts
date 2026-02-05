@@ -16,7 +16,7 @@ export class PrismaService
   private readonly logger = new Logger(PrismaService.name);
 
   constructor() {
-    // Prisma 7: PG Adapter für Neon/Postgres
+
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,
     });

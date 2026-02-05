@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7022036-de5e-48ac-8da0-82513d633417" name="Changes" comment="created refresh_token logic &amp; better error handling">
-      <change afterPath="$PROJECT_DIR$/project-name/src/friends/dto/respond-friend-request.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-name/src/friends/dto/send-friend-request.dto.ts" afterDir="false" />
+    <list default="true" id="a7022036-de5e-48ac-8da0-82513d633417" name="Changes" comment="added username emptry edge case &amp; doc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/src/auth/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/auth/jwt.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/src/auth/auth.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/auth/auth.service.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-name/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/src/prisma/prisma.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/prisma/prisma.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/users/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="add-remove-friends" />
-                    <option name="lastUsedInstant" value="1769859384" />
+                    <option name="lastUsedInstant" value="1770278802" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="register-login" />
@@ -92,8 +91,8 @@
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/WieNennenWirUns/bingo-backend&quot;,
-    &quot;accountId&quot;: &quot;4f650587-deb4-4b24-89f2-2491ce39a8bd&quot;
+    &quot;url&quot;: &quot;https://github.com/WieNennenWirUns/bingo-backend.git&quot;,
+    &quot;accountId&quot;: &quot;ee2be847-7230-4d8f-afff-88cac0b745ae&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -105,28 +104,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "add-remove-friends",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Yanik\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "C:\\Users\\Yanik\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#3 on add-remove-friends&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Yanik\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;consents&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\YHofmann\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yanik\WebstormProjects\bingo-backend\project-name\prisma" />
@@ -136,7 +133,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-WS-252.23892.411" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
       </set>
     </attachedChunks>
   </component>
@@ -158,12 +155,9 @@
       <workItem from="1769089757253" duration="613000" />
       <workItem from="1769090396963" duration="8641000" />
       <workItem from="1769105836204" duration="630000" />
-      <workItem from="1769172006188" duration="5404000" />
-      <workItem from="1769333828212" duration="2747000" />
-      <workItem from="1769444720773" duration="13000" />
-      <workItem from="1769682099821" duration="128000" />
-      <workItem from="1769852340182" duration="70000" />
-      <workItem from="1769859223540" duration="5755000" />
+      <workItem from="1769172006188" duration="5021000" />
+      <workItem from="1770291111073" duration="1570000" />
+      <workItem from="1770294215761" duration="1107000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -189,13 +183,13 @@
       <option name="project" value="LOCAL" />
       <updated>1769097692491</updated>
     </task>
-    <task id="LOCAL-00004" summary="created refresh_token logic &amp; better error handling">
+    <task id="LOCAL-00004" summary="added username emptry edge case &amp; doc">
       <option name="closed" value="true" />
-      <created>1769178337479</created>
+      <created>1770282033733</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1769178337479</updated>
+      <updated>1770282033733</updated>
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -218,7 +212,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="created auth and user classes - TBC" />
     <MESSAGE value="created auth endpoints (/auth/login &amp; /auth/register &amp; /auth/test) &amp; logic - TBC" />
-    <MESSAGE value="created refresh_token logic &amp; better error handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="created refresh_token logic &amp; better error handling" />
+    <MESSAGE value="added username emptry edge case &amp; doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="added username emptry edge case &amp; doc" />
   </component>
 </project>
