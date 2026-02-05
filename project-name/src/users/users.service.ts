@@ -12,6 +12,10 @@ export class UsersService {
 
   async createUser(username: string, email: string, password: string) {
 
+    if (username.length == 0) {
+      throw new BadRequestException("username can't be empty");
+    }
+
     if (username.length > 20) {
       throw new BadRequestException('username should not exceed 20 characters');
     }
