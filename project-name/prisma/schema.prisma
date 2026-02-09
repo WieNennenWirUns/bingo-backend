@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  //output   = "../node_modules/@prisma/client"
+}
+
+// prisma/schema.prisma
+datasource db {
+  provider  = "postgresql"
+  //url  	    = env("DATABASE_URL")
+  // uncomment next line if you use Prisma <5.10
+  // directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  username    String   @db.VarChar(20)
+  email       String   @unique
+  friendcode  String   @db.VarChar(6)
+  credentials String   @db.VarChar(60)
+
+  memberships   IsMemberOf[]
+  boardConfigs  HasBoardConfig[]
+  boards        Board[] @relation("BoardOwner")
+  createdAt     DateTime @default(now())
+
+  friendRequestsSent     FriendRequest[] @relation("FriendRequestsSent")
+  friendRequestsReceived FriendRequest[] @relation("FriendRequestsReceived")
+
+  friendships1           Friendship[]    @relation("FriendshipUser1")
+  friendships2           Friendship[]    @relation("FriendshipUser2")
+}
+
+
+model Board {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(30)
+  size       Int
+  status     Int      @default(0)
+  createdAt  DateTime @default(now())
+  ownerId    Int?
+  owner      User?    @relation("BoardOwner", fields: [ownerId], references: [id])
+
+  tasks      Task[]
+  members    IsMemberOf[]
+}
+
+model Task {
+  id            Int      @id @default(autoincrement())
+  content       String
+  requiresProof Boolean  @default(false)
+  boardId       Int
+  board         Board    @relation(fields: [boardId], references: [id])
+
+  boardConfigs  HasBoardConfig[]
+}
+
+model IsMemberOf {
+  userId  Int
+  boardId Int
+  role    Int @default(3)
+
+  user  User  @relation(fields: [userId], references: [id])
+  board Board @relation(fields: [boardId], references: [id])
+
+  @@id([userId, boardId])
+}
+
+model HasBoardConfig {
+  userId       Int
+  taskId       Int
+  position     Int
+  completed    Boolean  @default(false)
+  timestampComp DateTime?
+
+  user User @relation(fields: [userId], references: [id])
+  task Task @relation(fields: [taskId], references: [id])
+
+  @@id([userId, taskId])
+}
+
+model FriendRequest {
+  id          Int                  @id @default(autoincrement())
+  fromId      Int
+  toId        Int
+  status      FriendRequestStatus  @default(PENDING)
+  createdAt   DateTime             @default(now())
+  respondedAt DateTime?
+
+  from User @relation("FriendRequestsSent",     fields: [fromId], references: [id])
+  to   User @relation("FriendRequestsReceived", fields: [toId],   references: [id])
+
+  @@unique([fromId, toId])
+}
+
+enum FriendRequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model Friendship {
+  id        Int      @id @default(autoincrement())
+  user1Id   Int
+  user2Id   Int
+  createdAt DateTime @default(now())
+
+  user1 User @relation("FriendshipUser1", fields: [user1Id], references: [id])
+  user2 User @relation("FriendshipUser2", fields: [user2Id], references: [id])
+
+  @@unique([user1Id, user2Id])
+}
