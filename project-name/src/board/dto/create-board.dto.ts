@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsNotEmpty, IsNumber, IsString, Max, MaxLength, Min, ValidateNested } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, MaxLength, Min, ValidateNested } from "class-validator";
 import { CreateTaskDto } from "src/board/dto/create-task.dto";
 import { CreateMemberDto } from "./create-member.dto";
 
@@ -16,9 +16,11 @@ export class CreateBoardDto {
 
     @ValidateNested({ each: true })
     @Type(() => CreateTaskDto)
-    tasks: CreateTaskDto[];
+    @IsOptional()
+    tasks?: CreateTaskDto[];
     
     @ValidateNested({ each: true })
     @Type(() => CreateMemberDto)
-    members: CreateMemberDto[];
+    @IsOptional()
+    members?: CreateMemberDto[];
 }

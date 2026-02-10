@@ -8,6 +8,8 @@ export class BoardService {
     constructor(private readonly prisma: PrismaService) { }
 
     async create(ownerId: number, dto: CreateBoardDto) {
+        dto.members = dto.members || [];
+        dto.tasks = dto.tasks || [];
         const users = await this.prisma.user.findMany({
             where: { id: { in: dto.members.map(member => member.userId) } },
             select: { id: true },
