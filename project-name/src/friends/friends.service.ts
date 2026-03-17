@@ -140,4 +140,16 @@ export class FriendsService {
       f.user1Id === userId ? f.user2 : f.user1,
     );
   }
+
+  async isFriend(userId1: number, userId2: number) {
+    const existingFriendship = await this.prisma.friendship.findFirst({
+      where: {
+        OR: [
+          { user1Id: userId1, user2Id: userId2 },
+          { user1Id: userId2, user2Id: userId1 },
+        ],
+      },
+    });
+    return !!existingFriendship;
+  }
 }
