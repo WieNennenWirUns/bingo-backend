@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7022036-de5e-48ac-8da0-82513d633417" name="Changes" comment="added username emptry edge case &amp; doc">
+    <list default="true" id="a7022036-de5e-48ac-8da0-82513d633417" name="Changes" comment="remove-friends endpoint + docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/src/auth/auth.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/auth/auth.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/src/prisma/prisma.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/prisma/prisma.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-name/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/users/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/src/board/board.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/board/board.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,26 +99,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#3 on add-remove-friends&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Yanik\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;consents&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\YHofmann\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "#4 on create-new-boards",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.preferred.runtime.type.id": "node",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Yanik\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "consents",
+    "ts.external.directory.path": "C:\\Users\\YHofmann\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yanik\WebstormProjects\bingo-backend\project-name\prisma" />
@@ -213,6 +208,7 @@
     <MESSAGE value="created auth and user classes - TBC" />
     <MESSAGE value="created auth endpoints (/auth/login &amp; /auth/register &amp; /auth/test) &amp; logic - TBC" />
     <MESSAGE value="added username emptry edge case &amp; doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="added username emptry edge case &amp; doc" />
+    <MESSAGE value="remove-friends endpoint + docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove-friends endpoint + docs" />
   </component>
 </project>
