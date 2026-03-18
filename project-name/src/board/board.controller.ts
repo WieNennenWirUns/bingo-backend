@@ -13,6 +13,11 @@ export class BoardController {
         return this.boardService.create(req.user.userId, dto);
     }
 
+    @Post('mark-task/:boardId/:taskId')
+    async markTask(@Request() req, @Param('boardId') boardId: string, @Param('taskId') taskId: string) {
+        return this.boardService.markTask(req.user.userId, parseInt(boardId), parseInt(taskId));
+    }
+
     @Get('config/:boardId')
     async getBoardConfig(@Request() req, @Param('boardId') boardId: string) {
         return this.boardService.getBoardConfig(req.user.userId, parseInt(boardId));
