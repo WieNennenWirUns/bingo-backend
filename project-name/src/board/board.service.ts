@@ -1,6 +1,7 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { BoardConfigDto } from './dto/board-config.dto';
 
 @Injectable()
 export class BoardService {
@@ -87,5 +88,131 @@ export class BoardService {
     });
 
     return board;
+  }
+
+  async markTask(userId: number, boardId: number, taskId: number) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId }
+    });
+
+    if (!user) {
+      throw new BadRequestException('user does not exist');
+    }
+
+    const board = await this.prisma.board.findUnique({
+      where: { id: boardId }
+    });
+
+    if (!board) {
+      throw new BadRequestException('board does not exist');
+    }
+
+    const task = await this.prisma.task.findUnique({
+      where: { id: taskId }
+    });
+
+    if (!task) {
+      throw new BadRequestException('task does not exist');
+    }
+
+    if (task.boardId !== boardId) {
+      throw new BadRequestException('task does not belong to the board');
+    }
+
+    const member = await this.prisma.isMemberOf.findFirst({
+      where: {
+        boardId,
+        userId,
+      },
+    });
+
+    if (!member) {
+      throw new UnauthorizedException('user is not a member of the board');
+    }
+
+    const config = await this.prisma.hasBoardConfig.findFirst({
+      where: {
+        userId,
+        taskId,
+      }
+    });
+
+    if (!config) {
+      throw new BadRequestException('task is not assigned to the user');
+    }
+
+    return await this.prisma.hasBoardConfig.update({
+      where: {
+        userId_taskId: {
+          userId,
+          taskId,
+        },
+      },
+      data: {
+        completed: !config.completed,
+      }
+    });
+  }
+  
+  async getBoardConfig(userId: number, boardId: number): Promise<{ boardConfigs: BoardConfigDto[], unassignedTasksCount: number }> {
+    const boardConfigs: BoardConfigDto[] = [];
+    let unassignedTasksCount = 0;
+
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId }
+    });
+
+    if (!user) {
+      throw new BadRequestException('user does not exist');
+    }
+
+    const board = await this.prisma.board.findUnique({
+      where: { id: boardId }
+    });
+
+    if (!board) {
+      throw new BadRequestException('board does not exist');
+    }
+
+    const member = await this.prisma.isMemberOf.findFirst({
+      where: {
+        boardId,
+        userId,
+      },
+    });
+
+    if (!member) {
+      throw new UnauthorizedException('user is not a member of the board');
+    }
+
+    const tasks = await this.prisma.task.findMany({
+      where: { boardId }
+    });
+
+    for (const task of tasks) {
+      const config = await this.prisma.hasBoardConfig.findFirst({
+        where: {
+          userId,
+          taskId: task.id,
+        }
+      });
+
+      if (!config) {
+        unassignedTasksCount++;
+        continue;
+      }
+
+      boardConfigs.push({
+        task: {
+          content: task.content,
+          requiresProof: task.requiresProof,
+        },
+        completed: config.completed,
+        position: config.position,
+        timeStamp: config.timestampComp,
+      });
+    }
+
+    return {  boardConfigs, unassignedTasksCount };
   }
 }
