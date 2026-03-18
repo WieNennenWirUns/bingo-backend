@@ -45,7 +45,7 @@ export class FriendsService {
     });
     if (existingRequest) {
       throw new BadRequestException(
-        'there is alredy a pending request',
+        'there is already a pending request',
       );
     }
 
@@ -152,4 +152,30 @@ export class FriendsService {
     });
     return !!existingFriendship;
   }
+  
+  async removeFriend(currentUserId: number, friendId: number) {
+    if (currentUserId === friendId) {
+      throw new BadRequestException('you cannot unfriend yourself');
+    }
+
+    const friendship = await this.prisma.friendship.findFirst({
+      where: {
+        OR: [
+          { user1Id: currentUserId, user2Id: friendId },
+          { user1Id: friendId, user2Id: currentUserId },
+        ],
+      },
+    });
+
+    if (!friendship) {
+      throw new NotFoundException('friendship does not exist');
+    }
+
+    await this.prisma.friendship.delete({
+      where: { id: friendship.id },
+    });
+
+    return { success: true };
+  }
+
 }

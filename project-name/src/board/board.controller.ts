@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { BoardService } from './board.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -17,5 +17,15 @@ export class BoardController {
     @Post('add-member')
     async addMember(@Request() req, @Body() dto: AddMemberDto) {
         return this.boardService.addMember(req.user.userId, dto);
+    }
+    
+    @Post('mark-task/:boardId/:taskId')
+    async markTask(@Request() req, @Param('boardId') boardId: string, @Param('taskId') taskId: string) {
+        return this.boardService.markTask(req.user.userId, parseInt(boardId), parseInt(taskId));
+    }
+
+    @Get('config/:boardId')
+    async getBoardConfig(@Request() req, @Param('boardId') boardId: string) {
+        return this.boardService.getBoardConfig(req.user.userId, parseInt(boardId));
     }
 }
