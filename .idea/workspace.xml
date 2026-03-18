@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a7022036-de5e-48ac-8da0-82513d633417" name="Changes" comment="remove-friends endpoint + docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/src/friends/friends.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/friends/friends.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-name/src/friends/friends.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/friends/friends.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-name/src/board/board.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-name/src/board/board.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="register-login" />
+        <entry key="$PROJECT_DIR$" value="create-new-boards" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,15 +65,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="add-remove-friends" />
-                    <option name="lastUsedInstant" value="1770278802" />
+                    <option name="lastUsedInstant" value="1773769474" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="register-login" />
-                    <option name="lastUsedInstant" value="1768728158" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="database-setup" />
-                    <option name="lastUsedInstant" value="1768728029" />
+                    <option name="branchName" value="create-new-boards" />
+                    <option name="lastUsedInstant" value="1772697704" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -86,7 +86,7 @@
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/WieNennenWirUns/bingo-backend.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/WieNennenWirUns/bingo-backend&quot;,
     &quot;accountId&quot;: &quot;ee2be847-7230-4d8f-afff-88cac0b745ae&quot;
   }
 }</component>
@@ -99,6 +99,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-remove-friends&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Yanik\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;consents&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\YHofmann\\WebstormProjects\\bingo-backend\\project-name\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -121,6 +139,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\YHofmann\WebstormProjects\bingo-backend\project-name" />
       <recent name="C:\Users\Yanik\WebstormProjects\bingo-backend\project-name\prisma" />
       <recent name="C:\Users\Yanik\WebstormProjects\bingo-backend\project-name\src\prisma" />
     </key>
@@ -153,6 +172,14 @@
       <workItem from="1769172006188" duration="5021000" />
       <workItem from="1770291111073" duration="1570000" />
       <workItem from="1770294215761" duration="1107000" />
+      <workItem from="1772697661661" duration="427000" />
+      <workItem from="1772698133934" duration="6697000" />
+      <workItem from="1773237921768" duration="35000" />
+      <workItem from="1773392645753" duration="240000" />
+      <workItem from="1773392913902" duration="3591000" />
+      <workItem from="1773662336395" duration="66000" />
+      <workItem from="1773662457574" duration="5000" />
+      <workItem from="1773769451285" duration="2045000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
