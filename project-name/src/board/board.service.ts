@@ -264,4 +264,37 @@ export class BoardService {
 
     return {  boardConfigs, unassignedTasksCount };
   }
+
+  async getBoardsForUser(userId: number) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new BadRequestException('user does not exist');
+    }
+
+    const memberBoards = await this.prisma.isMemberOf.findMany({
+      where: { userId },
+      include: { board: true },
+    });
+
+    const ownerBoards = await this.prisma.board.findMany({
+      where: { ownerId: userId },
+    });
+
+    const allBoards = [
+      ...memberBoards.map((m) => m.board),
+      ...ownerBoards,
+    ];
+
+    const uniqueBoards = Array.from(
+        new Map(allBoards.map((b) => [b.id, b])).values(),
+    );
+
+    return uniqueBoards;
+  }
+
+
+
 }
