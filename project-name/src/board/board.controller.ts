@@ -28,4 +28,10 @@ export class BoardController {
     async getBoardConfig(@Request() req, @Param('boardId') boardId: string) {
         return this.boardService.getBoardConfig(req.user.userId, parseInt(boardId));
     }
+
+    @Get()
+    async getMyBoards(@Request() req) {
+        return this.boardService.getBoardsForUser(req.user.userId);
+    }
+
 }
